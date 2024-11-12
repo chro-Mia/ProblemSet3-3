@@ -49,18 +49,6 @@ public class Zombie
         }
     }
 
-    // Keeps zombie walking until it is outside the distance argument
-    // then returns the number of steps it took
-    public static int stepsToGoToDistance(double distance){
-        Zombie zombie = new Zombie(0, 0);
-        int steps = 0;
-        while(pythag(zombie.x, zombie.y) < distance){
-            zombie.walk();
-            steps++;
-        }
-        return steps;
-    }
-
     public String toString(){
         return "(" + x + ", " + y + ")";
     }
@@ -69,7 +57,7 @@ public class Zombie
         stepSize = max;
     }
 
-    private static double pythag(double a, double b){
+    public static double pythag(double a, double b){
         return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2));
     }
 
