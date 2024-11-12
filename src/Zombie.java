@@ -4,10 +4,10 @@ public class Zombie
     private double y;
 
     // The maximum length of a step a zombie could take
-    private static double stepSize = 5;
+    private static double stepSize = 3;
 
     // Must be a positive double, higher values decrease the probability the zombie will take a biased step
-    private static double biasCoefficient = 2;
+    private static double biasCoefficient = -1;
 
     // Controls how large biased steps are
     private static double biasedStepSize = 100;
