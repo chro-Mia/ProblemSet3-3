@@ -7,7 +7,7 @@ public class Zombie
     private static double stepSize = 3;
 
     // Must be a positive double, higher values decrease the probability the zombie will take a biased step
-    private static double biasCoefficient = -1;
+    private static double biasCoefficient = 2;
 
     // Controls how large biased steps are
     private static double biasedStepSize = 100;
@@ -47,10 +47,10 @@ public class Zombie
     }
 
     public static int stepsToGoToDistance(double distance){
-        Zombie d = new Zombie(0, 0);
+        Zombie zombie = new Zombie(0, 0);
         int steps = 0;
-        while(pythag(d.x, d.y) < distance){
-            d.walk();
+        while(pythag(zombie.x, zombie.y) < distance){
+            zombie.walk();
             steps++;
         }
         return steps;
