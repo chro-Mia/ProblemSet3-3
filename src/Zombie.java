@@ -38,6 +38,9 @@ public class Zombie
         y += Math.random() * stepSize * 2 - stepSize;
     }
 
+    // Uses a probability function to determine if a biased step should be taken
+    // Biased steps are multiplied by a random factor, and also by the probability function
+    // This means that the farther away a zombie is from the mouse, the smaller its biased steps will be
     public void walkToward(int x, int y){
         this.walk();
         if(biasFunction(x, y) >= Math.random()){
@@ -46,6 +49,8 @@ public class Zombie
         }
     }
 
+    // Keeps zombie walking until it is outside the distance argument
+    // then returns the number of steps it took
     public static int stepsToGoToDistance(double distance){
         Zombie zombie = new Zombie(0, 0);
         int steps = 0;
@@ -70,7 +75,7 @@ public class Zombie
 
     // Uses the function 1 / a * sqrt(x - h) + 1 to determine the probability a zombie will take a biased step
     private double biasFunction(double x, double y){
-        if(pythag(x - this.x, y - this.y) >= noBiasRadius) {
+        if(pythag(x - this.x, y - this.y) > noBiasRadius) {
             return 1 / (biasCoefficient * (Math.sqrt(pythag(x - this.x, y - this.y) - noBiasRadius)) + 1);
         }
         else{
